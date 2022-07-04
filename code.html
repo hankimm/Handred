@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A coding project by Han Kim</title>
+    <title>Handred: A coding project by Han Kim</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +22,7 @@
     <!-- Nav Section -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="bi bi-terminal"></i> APP NAME</a>
+            <a class="navbar-brand fonttitle" href="#"><i class="bi bi-terminal"></i> Handred</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="app.html">The App</a>
+                        <a class="nav-link" href="app.html">Handred</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
@@ -43,7 +43,7 @@
                         <a class="nav-link" target="_blank" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/hankimm/Handred">Git Repo</a>
                     </li>
                 </ul>
             </div>
@@ -53,13 +53,53 @@
     <main class="flex-shrink-0">
         <div class="container py-5 px-5">
             <br>
-            <h2 class="border-1 border-bottom border-dark">Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark fonttitle">Code for Handred.</h2>
             <div class="row row-cols-1 row-cols-md-2 g-5 py-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function helloWorld(){
-                            alert("hello World");
+                        // get the values from page
+                        // starts or controller function
+                        function getValues(){
+                            let startValue = document.getElementById("startValue").value;
+                            let endValue = document.getElementById("endValue").value;
+
+                            startValue = parseInt(startValue);
+                            endValue = parseInt(endValue);
+
+                            if(Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                let numbers = [];
+                                numbers = genNumbers(startValue, endValue);
+                                displayNumbers(numbers);
+                            } else {
+                                alert("You must enter integers");
+                            }
+                        }
+
+                        // fill in array of numbers
+                        function genNumbers(start, end) {
+                            let numbers = [];
+                            for(let index = start; index <= end; index++) {
+                                numbers.push(index);
+                            }
+                            return numbers;
+                        }
+
+                        //display numbers and mark even numbers bold
+                        //display or view functions
+                        function displayNumbers(numbers) {
+                            let tempRow = "";
+
+                            for(let num of numbers) {
+                                let className = "";
+                                if(num % 2 == 0) {
+                                    className = "even";
+                                } else {
+                                    className = "odd";
+                                }
+                                tempRow += `<tr><td class="${className}">${num}</td></tr>`;
+                            }
+
+                            document.getElementById("results").innerHTML = tempRow;
                         }
                     </code>
                     </pre>

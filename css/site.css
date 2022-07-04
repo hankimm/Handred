@@ -52,7 +52,16 @@ white-space: pre-wrap;
 word-break: break-all;
 word-wrap: break-word;
 }
-
+.fonttitle{
+    font-family: 'DM Serif Display', serif;
+}
+.odd{
+    font-weight: 100;
+}
+.even{
+    font-weight: bold;
+    font-size: large;
+}
 .shift{
     margin-left:50px;
 }
